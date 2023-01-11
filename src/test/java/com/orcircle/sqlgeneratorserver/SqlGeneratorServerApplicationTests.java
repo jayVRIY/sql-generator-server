@@ -1,13 +1,14 @@
 package com.orcircle.sqlgeneratorserver;
 
+import com.orcircle.sqlgeneratorserver.bean.TemplateFactory;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+
 class SqlGeneratorServerApplicationTests {
-
     @Test
-    void contextLoads() {
+    void contextLoads() throws Exception {
+        String s = "inset into ${sas dd ss} ${asdfd} ";
+        new TemplateFactory(s);
     }
 
 }
