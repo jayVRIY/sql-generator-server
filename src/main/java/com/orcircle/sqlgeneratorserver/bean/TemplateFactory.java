@@ -18,7 +18,7 @@ public class TemplateFactory {
         var endIdex = 0;
         var isMatchStart = false;
         ArrayList<String> strings = new ArrayList<>();
-        for (int i = 0; i < chars.length; i++) {
+        loop:for (int i = 0; i < chars.length; i++) {
             switch (chars[i]) {
                 case PREFIX1 -> {
                     if (chars[i + 1] != PREFIX2) {
@@ -37,6 +37,14 @@ public class TemplateFactory {
                     String templateKey = new String(Arrays.copyOfRange(chars, matchStartIndex, endIdex));
                     strings.add(templateKey);
                     keyWordMapper.put(templateKey, strings.size() - 1);
+                    var hasLeft = false;
+                    for (int i1 = i; i1 < chars.length; i1++) {
+                        if (i1 == PREFIX1) hasLeft = true;
+                    }
+                    if (!hasLeft) {
+                        strings.add(new String(Arrays.copyOfRange(chars, endIdex, chars.length)));
+                        break loop;
+                    }
                 }
             }
         }

@@ -29,15 +29,14 @@ public class TextSqlGeneratorController {
             //读取模版-值对应表
             String templateMapString = textGenerateSQLDTO.getTemplateMapString();
             ObjectMapper objectMapper = new ObjectMapper();
-            HashMap<String, Integer> hashMap = objectMapper.readValue(templateMapString, HashMap.class);
+            var hashMap = objectMapper.readValue(templateMapString, HashMap.class);
             hashMap.forEach((k, v) -> {
                 try {
                     if (!(k instanceof String)) throw new Exception();
-                    if (!(v instanceof Integer)) throw new Exception();
+                    if (!(v instanceof Integer)) throw new Exception("传参并非数字");
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
-
             });
             textGenerateSQLDTO.setTemplateMap(hashMap);
             //创建模版工厂
