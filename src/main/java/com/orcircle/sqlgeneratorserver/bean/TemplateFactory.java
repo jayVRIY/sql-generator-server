@@ -39,7 +39,10 @@ public class TemplateFactory {
                     keyWordMapper.put(templateKey, strings.size() - 1);
                     var hasLeft = false;
                     for (int i1 = i; i1 < chars.length; i1++) {
-                        if (i1 == PREFIX1) hasLeft = true;
+                        if (i1 == PREFIX1) {
+                            hasLeft = true;
+                            break;
+                        }
                     }
                     if (!hasLeft) {
                         strings.add(new String(Arrays.copyOfRange(chars, endIdex, chars.length)));
