@@ -43,13 +43,15 @@ public class TemplateFactory {
         templateSplits = strings.toArray(new String[]{});
     }
 
-    public String assembleTemplate(Map<String, Integer> templateMapper, String[] values) {
+    public String assembleTemplate(Map<String, Object> templateMapper, String[] values) {
         String[] clone = templateSplits.clone();
         //遍历已识别模版，将模版对应的模版字符替换成上送的实际值
         keyWordMapper.forEach((k, v) -> {
-            Integer matchedIndex = templateMapper.get(k);
-            if (matchedIndex != null) {
-                clone[v] = values[matchedIndex];
+            var matchedValue = templateMapper.get(k);
+            if (matchedValue instanceof Integer) {
+                clone[v] = values[(Integer) matchedValue];
+            } else if (matchedValue instanceof String) {
+                clone[v] = (String) matchedValue;
             }
         });
         StringBuilder result = new StringBuilder();

@@ -11,7 +11,7 @@ public class TextGenerateSQLDTO {
     private String lineSeparator;
     private String separator;
     private String template;
-    private HashMap<String, Integer> templateMap;
+    private HashMap<String, Object> templateMap;
     private String templateMapString;
 
 }
