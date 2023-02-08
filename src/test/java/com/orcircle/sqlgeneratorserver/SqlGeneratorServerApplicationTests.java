@@ -10,5 +10,4 @@ class SqlGeneratorServerApplicationTests {
         String s = "inset into ${sas dd ss} ${asdfd} ";
         new TemplateFactory(s);
     }
-
 }

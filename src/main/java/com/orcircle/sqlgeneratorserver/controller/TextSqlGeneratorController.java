@@ -40,7 +40,11 @@ public class TextSqlGeneratorController {
                 responseDataString.append(templateFactory.assembleTemplate(textGenerateSQLDTO.getTemplateMap(), values));
                 responseDataString.append("\n");
             }
-            return ResponseEntity.ok().contentType(MediaType.APPLICATION_OCTET_STREAM).header("Content-disposition", "attachment; filename=toRun.sql").body(responseDataString.toString().getBytes());
+            return ResponseEntity
+                    .ok()
+                    .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                    .header("Content-disposition", "attachment; filename=toRun.sql")
+                    .body(responseDataString.toString().getBytes());
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(500).body("文件上传失败".getBytes());
